@@ -1,0 +1,19 @@
+.categories-tabs {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  gap: 25px;
+  overflow: auto;
+  scrollbar-width: none;
+  padding: 0px 15px;
+
+  @media (min-width: 577px) {
+    padding: 0px 25px;
+  }
+  @media (min-width: 992px) {
+    padding: 0px 100px;
+  }
+  @media (min-width: 1200px) {
+    padding: 15px 180px;
+  }
+}

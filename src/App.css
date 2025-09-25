@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-list-container {
+  overflow: auto;
+  flex-grow: 1;
+  scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dish-list {
+  list-style-type: none;
+  padding: 15px;
+  width: 100%;
+
+  @media (min-width: 577px) {
+    padding: 15px 25px;
+  }
+  @media (min-width: 992px) {
+    padding: 15px 100px;
+  }
+  @media (min-width: 1200px) {
+    padding: 15px 180px;
+  }
+}
+
+/* styles for when dishes not available */
+
+.no-dishes-container {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.no-dishes-img {
+  width: 70%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+.retry-button {
+  background-color: #ffe1a9;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 20px;
+  cursor: pointer;
+}

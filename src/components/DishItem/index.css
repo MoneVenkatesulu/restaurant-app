@@ -1,0 +1,74 @@
+.dish-card {
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  border: 1px solid #808080;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  padding: 8px;
+  margin-bottom: 5px;
+
+  @media (min-width: 576px) {
+    margin-bottom: 10px;
+    padding: 15px;
+    gap: 15px;
+  }
+}
+
+.dish-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5px;
+  width: 75%;
+}
+
+.dish-price {
+  color: grey;
+  font-weight: 500;
+}
+
+.dish-description {
+  color: #3d3d3d;
+  text-align: justify;
+}
+
+.dish-plus-minus-container {
+  background-color: #008e00;
+  color: #ffffff;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.dish-plus-minus-buttons {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.dish-not-available-text {
+  color: #b10000;
+}
+
+.dish-customization-available-text {
+  color: #786cff;
+}
+
+.dish-calories {
+  color: #ffa500;
+  font-weight: bold;
+  align-self: center;
+}
+
+.dish-img {
+  width: 70px;
+  max-height: 150px;
+  margin-left: auto;
+  border-radius: 5px;
+}
