@@ -18,6 +18,95 @@ body {
   flex-direction: column;
 }
 
+/* header styles */
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 1px 3px #eaeaea;
+  padding: 15px;
+
+  @media (min-width: 577px) {
+    padding: 15px 25px;
+  }
+  @media (min-width: 992px) {
+    padding: 15px 100px;
+  }
+  @media (min-width: 1200px) {
+    padding: 15px 180px;
+  }
+}
+
+.restaurant-name {
+  font-size: 20px;
+
+  @media (min-width: 577px) {
+    font-size: 30px;
+  }
+}
+
+.order-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.order-text {
+  font-weight: bold;
+  @media (max-width: 575px) {
+    display: none;
+  }
+}
+
+.cart-icon-container {
+  position: relative;
+}
+
+.cart-icon {
+  font-size: 25px;
+
+  @media (min-width: 577px) {
+    font-size: 30px;
+  }
+}
+
+.orders-count {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 0px 6px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* category tabs styles */
+
+.categories-tabs {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  gap: 25px;
+  overflow: auto;
+  scrollbar-width: none;
+  padding: 0px 15px;
+
+  @media (min-width: 577px) {
+    padding: 0px 25px;
+  }
+  @media (min-width: 992px) {
+    padding: 0px 100px;
+  }
+  @media (min-width: 1200px) {
+    padding: 15px 180px;
+  }
+}
+
+/* dish list styles */
+
 .dish-list-container {
   overflow: auto;
   flex-grow: 1;
@@ -46,7 +135,7 @@ body {
 /* styles for when dishes not available */
 
 .no-dishes-container {
-  height: 70%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

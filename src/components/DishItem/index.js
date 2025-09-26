@@ -55,7 +55,7 @@ const DishItem = props => {
           <p className="dish-not-available-text">Not available</p>
         )}
 
-        {addOnCat.length !== 0 && (
+        {addOnCat.length > 0 && (
           <p className="dish-customization-available-text">
             Customization Available
           </p>
