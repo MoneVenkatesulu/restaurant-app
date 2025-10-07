@@ -1,8 +1,14 @@
+import {useState, useContext} from 'react'
+
+import CartContext from '../../context/CartContext'
+
 import './index.css'
 import DotIcon from './styled-components'
 
-const DishItem = props => {
-  const {dish, cartDishes, updateCartDishes} = props
+const DishItem = ({dish}) => {
+  const [quantity, setQuantity] = useState(1)
+  const {addCartItem} = useContext(CartContext)
+
   const {
     dish_id: dishId,
     dish_Type: dishType,
@@ -16,8 +22,17 @@ const DishItem = props => {
     dish_image: dishImage,
   } = dish
 
-  const orderedDish = cartDishes.find(item => item.dishId === dishId)
-  const dishCount = orderedDish ? orderedDish.count : 0
+  const onAddToCart = () => {
+    const item = {
+      dishId,
+      dishName,
+      dishCurrency,
+      dishPrice,
+      quantity,
+      dishImage,
+    }
+    addCartItem(item)
+  }
 
   return (
     <li className="dish-card">
@@ -33,24 +48,33 @@ const DishItem = props => {
         <p className="dish-description">{dishDescription}</p>
 
         {dishAvailability ? (
-          <span className="dish-plus-minus-container">
+          <div className="dish-items-add-button-container">
+            <div className="dish-plus-minus-container">
+              <button
+                type="button"
+                className="dish-plus-minus-buttons"
+                onClick={() => setQuantity(prev => prev - 1)}
+                disabled={quantity === 1}
+              >
+                -
+              </button>
+              {quantity}
+              <button
+                type="button"
+                className="dish-plus-minus-buttons"
+                onClick={() => setQuantity(prev => prev + 1)}
+              >
+                +
+              </button>
+            </div>
             <button
               type="button"
-              className="dish-plus-minus-buttons"
-              onClick={() => updateCartDishes(false, dishId)}
-              disabled={dishCount === 0}
+              className="add-to-cart-btn"
+              onClick={onAddToCart}
             >
-              -
+              Add to cart
             </button>
-            {dishCount}
-            <button
-              type="button"
-              className="dish-plus-minus-buttons"
-              onClick={() => updateCartDishes(true, dishId)}
-            >
-              +
-            </button>
-          </span>
+          </div>
         ) : (
           <p className="dish-not-available-text">Not available</p>
         )}

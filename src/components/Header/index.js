@@ -1,21 +1,42 @@
+import {useContext} from 'react'
+import {useHistory, Link} from 'react-router-dom'
+import Cookie from 'js-cookie'
 import {IoCartOutline} from 'react-icons/io5'
+
+import CartContext from '../../context/CartContext'
 
 import './index.css'
 
-const Header = ({cartDishes, restaurantName}) => {
-  const allOrderedDishes = cartDishes.reduce(
-    (count, dish) => count + dish.count,
-    0,
-  )
+const Header = () => {
+  const history = useHistory()
+  const {restaurantData, cartList} = useContext(CartContext)
+
+  const onLogout = () => {
+    Cookie.remove('jwt_token')
+    history.replace('/login')
+  }
+
   return (
-    <div className="header-container">
-      <h1 className="restaurant-name">{restaurantName}</h1>
-      <div className="order-section">
-        <p className="order-text">My Orders</p>
-        <div className="cart-icon-container">
-          <IoCartOutline className="cart-icon" />
-          <span className="orders-count">{allOrderedDishes}</span>
-        </div>
+    <div className="header-container responsive-padding">
+      <Link to="/" className="restaurant-name-link">
+        <h1 className="restaurant-name">
+          {restaurantData.data.restaurant_name}
+        </h1>
+      </Link>
+
+      <div className="cart-icon-logout-container">
+        <Link to="/cart" className="header-cart-text-icon" data-testid="cart">
+          <p className="header-cart-text">My Orders</p>
+
+          <span className="header-cart-icon">
+            <IoCartOutline aria-label="Cart Icon" />
+            <span className="cart-items-count">{cartList.length}</span>
+          </span>
+        </Link>
+
+        <button type="button" className="logout-btn" onClick={onLogout}>
+          Logout
+        </button>
       </div>
     </div>
   )

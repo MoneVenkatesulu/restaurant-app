@@ -18,17 +18,14 @@ body {
   flex-direction: column;
 }
 
-/* header styles */
+.responsive-padding {
+  padding: 10px 15px;
 
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0px 1px 3px #eaeaea;
-  padding: 15px;
-
-  @media (min-width: 577px) {
-    padding: 15px 25px;
+  @media (min-width: 576px) {
+    padding: 10px 50px;
+  }
+  @media (min-width: 768px) {
+    padding: 10px 75px;
   }
   @media (min-width: 992px) {
     padding: 15px 100px;
@@ -38,104 +35,10 @@ body {
   }
 }
 
-.restaurant-name {
-  font-size: 20px;
+/* No DATA STYLES */
 
-  @media (min-width: 577px) {
-    font-size: 30px;
-  }
-}
-
-.order-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.order-text {
-  font-weight: bold;
-  @media (max-width: 575px) {
-    display: none;
-  }
-}
-
-.cart-icon-container {
-  position: relative;
-}
-
-.cart-icon {
-  font-size: 25px;
-
-  @media (min-width: 577px) {
-    font-size: 30px;
-  }
-}
-
-.orders-count {
-  position: absolute;
-  top: -4px;
-  right: -8px;
-  background-color: #ff0000;
-  color: #ffffff;
-  padding: 0px 6px;
-  border-radius: 50%;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-/* category tabs styles */
-
-.categories-tabs {
-  list-style-type: none;
-  display: flex;
-  justify-content: flex-start;
-  gap: 25px;
-  overflow: auto;
-  scrollbar-width: none;
-  padding: 0px 15px;
-
-  @media (min-width: 577px) {
-    padding: 0px 25px;
-  }
-  @media (min-width: 992px) {
-    padding: 0px 100px;
-  }
-  @media (min-width: 1200px) {
-    padding: 15px 180px;
-  }
-}
-
-/* dish list styles */
-
-.dish-list-container {
-  overflow: auto;
-  flex-grow: 1;
-  scrollbar-width: thin;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.dish-list {
-  list-style-type: none;
-  padding: 15px;
-  width: 100%;
-
-  @media (min-width: 577px) {
-    padding: 15px 25px;
-  }
-  @media (min-width: 992px) {
-    padding: 15px 100px;
-  }
-  @media (min-width: 1200px) {
-    padding: 15px 180px;
-  }
-}
-
-/* styles for when dishes not available */
-
-.no-dishes-container {
-  height: 100vh;
+.no-data-content {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -143,16 +46,11 @@ body {
   gap: 20px;
 }
 
-.no-dishes-img {
-  width: 70%;
-  max-width: 500px;
+.no-data-img {
   border-radius: 10px;
-}
+  width: 220px;
 
-.retry-button {
-  background-color: #ffe1a9;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 20px;
-  cursor: pointer;
+  @media (min-width: 768px) {
+    width: 320px;
+  }
 }

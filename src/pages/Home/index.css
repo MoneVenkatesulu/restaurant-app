@@ -1,0 +1,18 @@
+.home-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-content-container {
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+.dish-list {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  padding-top: 10px;
+}

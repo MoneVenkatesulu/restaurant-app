@@ -1,13 +1,23 @@
+import {useContext} from 'react'
+
+import CartContext from '../../context/CartContext'
+
 import './index.css'
 import TabButton from './styled-components'
 
 const CategoryTabs = props => {
-  const {categories, activeCategory, changeActiveCategory} = props
+  const {activeCategory, changeActiveCategory} = props
+
+  const {restaurantData} = useContext(CartContext)
+
+  const categoryList = restaurantData.data.table_menu_list.map(
+    item => item.menu_category,
+  )
 
   return (
     <nav>
       <ul className="categories-tabs">
-        {categories.map(eachCategory => (
+        {categoryList.map(eachCategory => (
           <li key={eachCategory}>
             <TabButton
               type="button"

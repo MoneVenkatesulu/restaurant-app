@@ -2,8 +2,8 @@ import Styled from 'styled-components'
 
 const TabButton = Styled.button`
   border: none;
-  border-bottom: ${props => (props.$isActive ? '2px solid red' : 'none')};
-  color: ${props => (props.$isActive ? 'red' : '#000000')};
+  border-bottom: ${props => (props.$isActive ? '2px solid #ff0000' : 'none')};
+  color: ${props => (props.$isActive ? '#ff0000' : '#000000')};
   background-color: transparent;
   white-space: nowrap;
   width: 140px;
