@@ -5,9 +5,10 @@ import Cookie from 'js-cookie'
 import './index.css'
 
 const Login = () => {
-  const [userName, setUserName] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showErrorMsg, setShowErrorMsg] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
   const history = useHistory()
 
   useEffect(() => {
@@ -19,28 +20,30 @@ const Login = () => {
 
   const onSubmitForm = async event => {
     event.preventDefault()
-    if (userName !== '' && password !== '') {
-      const url = 'https://apis.ccbp.in/login'
-      const body = JSON.stringify({username: userName, password})
-      const options = {
-        method: 'POST',
-        body,
-      }
 
+    const url = 'https://apis.ccbp.in/login'
+    const body = JSON.stringify({username, password})
+    const options = {
+      method: 'POST',
+      body,
+    }
+
+    try {
       const response = await fetch(url, options)
       const data = await response.json()
-      if (response.ok) {
-        setUserName('')
-        setPassword('')
-        setShowErrorMsg(false)
 
-        Cookie.set('jwt_token', data.jwt_token)
-        history.replace('/')
-      } else {
-        setShowErrorMsg(true)
+      if (!response.ok) {
+        throw new Error(data.error_msg)
       }
-    } else {
+      setUsername('')
+      setPassword('')
+      setShowErrorMsg(false)
+
+      Cookie.set('jwt_token', data.jwt_token, {expires: 1})
+      history.replace('/')
+    } catch (error) {
       setShowErrorMsg(true)
+      setErrorMsg(error.message)
     }
   }
 
@@ -52,7 +55,7 @@ const Login = () => {
         <form className="login-form" onSubmit={onSubmitForm}>
           <div>
             <label htmlFor="username" className="login-labels">
-              USER NAME
+              USERNAME
             </label>
             <br />
             <input
@@ -60,8 +63,8 @@ const Login = () => {
               type="text"
               placeholder="User Name"
               className="input-bars"
-              value={userName}
-              onChange={e => setUserName(e.target.value)}
+              value={username}
+              onChange={e => setUsername(e.target.value)}
             />
           </div>
 
@@ -82,11 +85,7 @@ const Login = () => {
 
           <div className="submit-btn-container">
             <input type="submit" value="Login" className="submit-btn" />
-            {showErrorMsg && (
-              <p className="error-msg">
-                *Please provide valid User Name and Password
-              </p>
-            )}
+            {showErrorMsg && <p className="error-msg">{errorMsg}</p>}
           </div>
         </form>
       </div>

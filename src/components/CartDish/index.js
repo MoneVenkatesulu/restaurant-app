@@ -24,7 +24,7 @@ const CartDish = ({dish}) => {
         <h5>{dishName}</h5>
 
         <p className="cart-dish-price">
-          Dish Price: {dishCurrency} {dishPrice}
+          {dishCurrency} {dishPrice}
         </p>
 
         <p className="cart-dish-price">Total Price: {quantity * dishPrice}</p>

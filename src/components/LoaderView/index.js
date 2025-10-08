@@ -1,8 +1,8 @@
-import {ClipLoader} from 'react-spinners'
+import Loader from 'react-loader-spinner'
 
 const LoaderView = () => (
   <div className="no-data-content">
-    <ClipLoader size={70} color="#ffa500" />
+    <Loader type="TailSpin" size={70} color="#ffa500" />
   </div>
 )
 

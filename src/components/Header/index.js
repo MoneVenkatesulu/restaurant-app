@@ -28,11 +28,10 @@ const Header = () => {
         <Link to="/cart" className="header-cart-text-icon" data-testid="cart">
           <p className="header-cart-text">My Orders</p>
 
-          <span className="header-cart-icon">
-            <IoCartOutline aria-label="Cart Icon" />
-            <span className="cart-items-count">{cartList.length}</span>
-          </span>
+          <IoCartOutline aria-label="Cart Icon" className="header-cart-icon" />
         </Link>
+
+        <span className="cart-items-count">{cartList.length}</span>
 
         <button type="button" className="logout-btn" onClick={onLogout}>
           Logout

@@ -40,7 +40,6 @@
 }
 
 .header-cart-icon {
-  position: relative;
   font-size: 25px;
 
   @media (min-width: 577px) {
@@ -49,9 +48,6 @@
 }
 
 .cart-items-count {
-  position: absolute;
-  top: -4px;
-  right: -8px;
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 50%;

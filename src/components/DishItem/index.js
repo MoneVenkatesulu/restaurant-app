@@ -1,12 +1,12 @@
 import {useState, useContext} from 'react'
+import {FaCircle} from 'react-icons/fa'
 
 import CartContext from '../../context/CartContext'
 
 import './index.css'
-import DotIcon from './styled-components'
 
 const DishItem = ({dish}) => {
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(0)
   const {addCartItem} = useContext(CartContext)
 
   const {
@@ -36,7 +36,15 @@ const DishItem = ({dish}) => {
 
   return (
     <li className="dish-card">
-      <DotIcon $isVeg={dishType === 1} />
+      <FaCircle
+        $isVeg={dishType === 1}
+        className="dot-icon"
+        style={{
+          color: dishType === 1 ? '#ff0000' : '#008000',
+          border: dishType === 1 ? '1px solid #ff0000' : '1px solid #008000',
+          backgroundColor: dishType === 1 ? '#ffe5e5' : '#e5ffe5',
+        }}
+      />
 
       <div className="dish-content">
         <h5>{dishName}</h5>
@@ -54,7 +62,7 @@ const DishItem = ({dish}) => {
                 type="button"
                 className="dish-plus-minus-buttons"
                 onClick={() => setQuantity(prev => prev - 1)}
-                disabled={quantity === 1}
+                disabled={quantity === 0}
               >
                 -
               </button>
@@ -67,13 +75,15 @@ const DishItem = ({dish}) => {
                 +
               </button>
             </div>
-            <button
-              type="button"
-              className="add-to-cart-btn"
-              onClick={onAddToCart}
-            >
-              Add to cart
-            </button>
+            {quantity > 0 && (
+              <button
+                type="button"
+                className="add-to-cart-btn"
+                onClick={onAddToCart}
+              >
+                ADD TO CART
+              </button>
+            )}
           </div>
         ) : (
           <p className="dish-not-available-text">Not available</p>
@@ -81,7 +91,7 @@ const DishItem = ({dish}) => {
 
         {addOnCat.length > 0 && (
           <p className="dish-customization-available-text">
-            Customization Available
+            Customizations available
           </p>
         )}
       </div>

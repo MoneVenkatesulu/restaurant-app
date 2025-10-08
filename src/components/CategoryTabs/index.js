@@ -3,7 +3,6 @@ import {useContext} from 'react'
 import CartContext from '../../context/CartContext'
 
 import './index.css'
-import TabButton from './styled-components'
 
 const CategoryTabs = props => {
   const {activeCategory, changeActiveCategory} = props
@@ -19,13 +18,20 @@ const CategoryTabs = props => {
       <ul className="categories-tabs">
         {categoryList.map(eachCategory => (
           <li key={eachCategory}>
-            <TabButton
+            <button
               type="button"
+              className="tab-btn"
+              style={{
+                color: activeCategory === eachCategory ? '#ff0000' : '#000000',
+                borderBottom:
+                  activeCategory === eachCategory
+                    ? '2px solid #ff0000'
+                    : 'none',
+              }}
               onClick={() => changeActiveCategory(eachCategory)}
-              $isActive={activeCategory === eachCategory}
             >
               {eachCategory}
-            </TabButton>
+            </button>
           </li>
         ))}
       </ul>
