@@ -14,8 +14,6 @@ const CartDish = ({dish}) => {
 
   const {dishId, dishName, dishCurrency, dishPrice, quantity, dishImage} = dish
 
-  console.log(cartList)
-
   return (
     <li className="cart-dish">
       <img src={dishImage} alt={dishName} className="cart-dish-img" />
@@ -24,10 +22,12 @@ const CartDish = ({dish}) => {
         <h5>{dishName}</h5>
 
         <p className="cart-dish-price">
-          {dishCurrency} {dishPrice}
+          Unit Pirce: {dishCurrency} {dishPrice}
         </p>
 
-        <p className="cart-dish-price">Total Price: {quantity * dishPrice}</p>
+        <p className="cart-dish-price">
+          Total Price: {dishCurrency} {quantity * dishPrice}
+        </p>
       </div>
 
       <div className="cart-dish-increment-decrement-container">
