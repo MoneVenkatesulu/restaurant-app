@@ -1,5 +1,5 @@
 import {Switch, Route, Redirect} from 'react-router-dom'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useCallback} from 'react'
 
 import Login from './pages/Login'
 import Home from './pages/Home'
@@ -8,7 +8,6 @@ import ProtectedRoute from './components/ProtectedRoute'
 import NotFound from './pages/NotFound'
 
 import CartContext from './context/CartContext'
-import useFetchedData from './hooks/useFetchedData'
 import fetchStatusConstraints from './constants/fetchStatusConstraints'
 
 import './App.css'
@@ -19,15 +18,15 @@ const App = () => {
     data: {},
     status: fetchStatusConstraints.inProgress,
   })
-  const {data, status} = useFetchedData()
 
   useEffect(() => {
     document.title = 'Restaurant App'
   }, [])
 
-  useEffect(() => {
-    setRestaurantData({data, status})
-  }, [data, status])
+  const addRestaurantData = useCallback(
+    dataObj => setRestaurantData(dataObj),
+    [],
+  )
 
   const addCartItem = item => {
     const alreadyAdded = cartList.find(
@@ -82,6 +81,7 @@ const App = () => {
       <CartContext.Provider
         value={{
           restaurantData,
+          addRestaurantData,
           cartList,
           addCartItem,
           removeCartItem,

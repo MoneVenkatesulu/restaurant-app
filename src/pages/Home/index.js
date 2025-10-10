@@ -7,15 +7,23 @@ import DishItem from '../../components/DishItem'
 import LoaderView from '../../components/LoaderView'
 import FailureView from '../../components/FailureView'
 import NoDishesView from '../../components/NoDishesView'
-
 import CartContext from '../../context/CartContext'
+
+import useFetchedData from '../../hooks/useFetchedData'
 import fetchStatusConstraints from '../../constants/fetchStatusConstraints'
 
 import './index.css'
 
 const Home = () => {
   const [activeCategory, setActiveCategory] = useState('')
-  const {restaurantData} = useContext(CartContext)
+  const {restaurantData, addRestaurantData} = useContext(CartContext)
+  const {data, status} = useFetchedData()
+
+  useEffect(() => {
+    if (status === fetchStatusConstraints.success) {
+      addRestaurantData({data, status})
+    }
+  }, [data, status, addRestaurantData])
 
   useEffect(
     () =>

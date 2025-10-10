@@ -37,7 +37,6 @@ const DishItem = ({dish}) => {
   return (
     <li className="dish-card">
       <FaCircle
-        $isVeg={dishType === 1}
         className="dot-icon"
         style={{
           color: dishType === 1 ? '#ff0000' : '#008000',
